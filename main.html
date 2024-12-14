@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retro Desktop - My Portfolio</title>
+    <link rel="stylesheet" href="main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Press+Start+2P&family=Rubik+Distressed&family=Rubik+Doodle+Shadow&family=Sofia+Sans+Extra+Condensed:ital,wght@0,1..1000;1,1..1000&family=Stint+Ultra+Condensed&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="desktop">
+      <!-- Retro Window: About Me -->
+      <div class="window" id="window-aboutme">
+        <div class="window-header" id="aboutme-header">
+          <span>About Me</span>
+          <button class="close-btn">X</button>
+        </div>
+        <div class="window-content">
+          <h2>About Me</h2>
+          <p>
+            Hello! I'm Adheena Dev, a passionate web developer. I specialize in
+            front-end development and love creating interactive, retro-inspired
+            designs like this one. My goal is to craft user-friendly websites
+            with a vintage touch!
+          </p>
+        </div>
+      </div>
+
+      <!-- Retro Window: Projects -->
+      <div class="window" id="window-projects">
+        <div class="window-header" id="projects-header">
+          <span>Projects</span>
+          <button class="close-btn">X</button>
+        </div>
+        <div class="window-content">
+          <h2>Projects</h2>
+          <p>Here are some of the projects I have worked on...</p>
+        </div>
+      </div>
+
+      <!-- Retro Window: Contact -->
+      <div class="window" id="window-contact">
+        <div class="window-header" id="contact-header">
+          <span>Contact</span>
+          <button class="close-btn">X</button>
+        </div>
+        <div class="window-content">
+          <h2>Contact</h2>
+          <p>You can reach me at email@example.com</p>
+        </div>
+      </div>
+
+      <!-- Desktop Icons -->
+      <div class="icons">
+        <div class="icon" onclick="openWindow('aboutme')">
+          <img src="undertale1.png" alt="About Me" class="icon-img" />
+          <span>About Me</span>
+        </div>
+        <div class="icon" onclick="openWindow('projects')">
+          <img src="" alt="Projects" class="icon-img" />
+          <span>Projects</span>
+        </div>
+        <div class="icon" onclick="openWindow('contact')">
+          <img src="contact2.png" alt="Contact" class="icon-img" />
+          <span>Contact</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

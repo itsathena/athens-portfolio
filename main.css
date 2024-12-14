@@ -1,0 +1,199 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: url('curosr4.svg') 16 16, default;
+}
+
+body {
+    font-family: 'Press Start 2P', system-ui;
+    background-color: #f4e1d2;  /* Soft pastel background */
+    display: flex;
+    flex-direction: column;  /* Stack items vertically */
+    justify-content: flex-start;  /* Start from the top */
+    align-items: flex-start;  /* Center horizontally */
+    height: 100vh;
+    color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+/* Desktop Container */
+.desktop {
+    /* width: 90%;
+    height: 90%; */
+    /* border: 8px solid #f07d8c; */
+    border-radius: 15px;
+    position: relative;
+    padding: 20px;
+}
+
+/* Window Styles */
+/* Window styles */
+.window {
+    background-color: #f7c9c9;
+    border: 2px solid #d69393;
+    width: 300px;
+    padding: 10px;
+    position: absolute; /* Allows the window to be dragged */
+    top: 50%;  /* Initially center vertically */
+    left: 50%; /* Initially center horizontally */
+    transform: translate(-50%, -50%); /* Keep the window centered */
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 10; /* Ensure it stays on top */
+}
+
+.window.open {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.window.close {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+  
+
+@keyframes open-window {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+.window-header {
+    background-color: #f07d8c;
+    color: #fff;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.window-header button {
+    background: none;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.window-content {
+    padding: 15px;
+}
+
+.window-content h2 {
+    color: #f07d8c;
+    margin-bottom: 10px;
+}
+
+.window-content p {
+    font-size: 14px;
+    color: #444;
+}
+
+
+@keyframes open-window {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Icon Styles */
+.icons {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;  /* Stack elements vertically inside the window or icons */
+    align-items: center;  /* Align items horizontally inside each container */
+    margin: 30px;
+}
+
+.icon {
+    /* background-color: #f1a3c9; */
+    width: 100px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    height: 120px;
+    text-align: center;
+    padding-top: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* .icon:hover {
+    transform: scale(1.1);
+    background-color: #f07d8c;
+} */
+
+.icon-img {
+    width: 60px;
+    height: 90px;
+    margin-bottom: 8px;
+}
+
+.icon img[alt="Contact"] {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+.icon img[alt="Projects"] {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+
+.icon span {
+    display: block;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Smooth Transition for Window */
+.window {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.window.open {
+    display: block;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.window.close {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+@keyframes open-window {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
