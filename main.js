@@ -1,9 +1,15 @@
-// Function to open a window
+// Function to open a window at a random position
 function openWindow(windowId) {
   const window = document.getElementById(`window-${windowId}`);
   window.style.display = "block"; // Show window
   window.classList.add("open");
   window.classList.remove("close");
+
+  // Set a random position for the window
+  setRandomPosition(window);
+
+  // Bring the clicked window to the front
+  window.style.zIndex = 1000;
 
   // Initialize dragging for the opened window
   makeDraggable(windowId);
@@ -19,6 +25,22 @@ closeBtns.forEach((button) => {
     setTimeout(() => (window.style.display = "none"), 300); // Hide after animation
   });
 });
+
+// Function to set a random position for a window
+function setRandomPosition(window) {
+  const windowWidth = window.offsetWidth;
+  const windowHeight = window.offsetHeight;
+
+  const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+  // Ensure window stays within the screen bounds
+  const randomX = Math.floor(Math.random() * (screenWidth - windowWidth));
+  const randomY = Math.floor(Math.random() * (screenHeight - windowHeight));
+
+  window.style.left = `${randomX}px`;
+  window.style.top = `${randomY}px`;
+}
 
 // Function to make a window draggable
 function makeDraggable(windowId) {
@@ -72,7 +94,25 @@ function makeDraggable(windowId) {
 
 // Initialize on page load (for multiple windows)
 document.addEventListener("DOMContentLoaded", () => {
-  makeDraggable('aboutme');
-  makeDraggable('projects');
-  makeDraggable('contact');
+  document.querySelectorAll(".window").forEach(window => {
+    window.style.display = "none";  // Hide all windows initially
+  });
 });
+
+
+// Function to update the real-time clock
+function updateTime() {
+  const currentTime = new Date();
+  const hours = String(currentTime.getHours()).padStart(2, '0');
+  const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+  const seconds = String(currentTime.getSeconds()).padStart(2, '0');
+
+  const timeString = `${hours}:${minutes}:${seconds}`;
+  document.getElementById("current-time").innerText = timeString;
+}
+
+// Update the time every second
+setInterval(updateTime, 1000);
+
+// Initialize the clock when the page loads
+updateTime();
