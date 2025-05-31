@@ -54,31 +54,50 @@ function setRandomPosition(window) {
 // Function to make a window draggable
 function makeDraggable(windowId) {
   const dragItem = document.getElementById(`window-${windowId}`);
-  const dragHeader = document.getElementById(`${windowId}-header`);
+  const dragHeader = dragItem; // Make the entire window draggable
 
   let isMouseDown = false;
   let offsetX = 0, offsetY = 0;
 
-  // For desktop: Mouse drag events
+  // Desktop: Mouse events
   dragHeader.addEventListener("mousedown", (e) => {
+    if (
+      e.target.closest(".close-btn") || 
+      e.target.tagName === "BUTTON" || 
+      e.target.tagName === "A"
+    ) {
+      return; // Don't start dragging
+    }
+    
     isMouseDown = true;
-    offsetX = e.clientX - dragItem.getBoundingClientRect().left;
-    offsetY = e.clientY - dragItem.getBoundingClientRect().top;
+  
+    // Use offset relative to offsetParent for more accuracy
+    offsetX = e.clientX - dragItem.offsetLeft;
+    offsetY = e.clientY - dragItem.offsetTop;
+  
     dragItem.style.cursor = 'move';
+  
+    // Bring to front immediately
+    zIndexCounter++;
+    dragItem.style.zIndex = zIndexCounter;
   });
+  
+  
 
   document.addEventListener("mousemove", (e) => {
     if (isMouseDown) {
-      dragItem.style.left = e.clientX - offsetX + "px";
-      dragItem.style.top = e.clientY - offsetY + "px";
+      dragItem.style.left = (e.clientX - offsetX) + "px";
+      dragItem.style.top = (e.clientY - offsetY) + "px";
     }
   });
+  
 
   document.addEventListener("mouseup", () => {
     isMouseDown = false;
-    dragItem.style.cursor = 'default'; 
+    dragItem.style.cursor = 'default';
   });
 
+  // Bring to front on mouse/touch
   dragItem.addEventListener("mousedown", () => {
     zIndexCounter++;
     dragItem.style.zIndex = zIndexCounter;
@@ -89,27 +108,28 @@ function makeDraggable(windowId) {
     dragItem.style.zIndex = zIndexCounter;
   });
 
-  // For mobile: Touch drag events
+  // Mobile: Touch events
   dragHeader.addEventListener("touchstart", (e) => {
     isMouseDown = true;
-    const touch = e.touches[0]; // Get the first touch point
+    const touch = e.touches[0];
     offsetX = touch.clientX - dragItem.getBoundingClientRect().left;
     offsetY = touch.clientY - dragItem.getBoundingClientRect().top;
-    e.preventDefault(); // Prevent page scrolling during drag
+    e.preventDefault();
   });
 
   document.addEventListener("touchmove", (e) => {
     if (isMouseDown) {
-      const touch = e.touches[0]; // Get the first touch point
+      const touch = e.touches[0];
       dragItem.style.left = touch.clientX - offsetX + "px";
       dragItem.style.top = touch.clientY - offsetY + "px";
     }
-  });
+  }, { passive: false });
 
   document.addEventListener("touchend", () => {
     isMouseDown = false;
   });
 }
+
 
 // Initialize on page load (for multiple windows)
 document.addEventListener("DOMContentLoaded", () => {

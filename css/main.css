@@ -1,56 +1,57 @@
 /* Reset and Base Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* cursor: url('curosr4.svg') 16 16, default; */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Press Start 2P', system-ui;
-    background-color: #eee0bd;
+  font-family: 'Press Start 2P', system-ui;
+  background-color: #eee0bd;
     display: flex;
-    flex-direction: column;  
-    justify-content: flex-start;  
-    align-items: flex-start; 
-    height: 100vh;
-    color: #333;
-    padding: 0;
-    margin: 0;
+  flex-direction: column;  
+  justify-content: flex-start;  
+  align-items: flex-start; 
+  height: 100vh;
+  color: #333;
+  padding: 0;
+  margin: 0;
 }
 
 body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  pointer-events: none;
-  background:
-    repeating-linear-gradient(
-      to bottom,
+content: "";
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+pointer-events: none;
+background:
+  repeating-linear-gradient(
+    to bottom,
       rgba(0,0,0,0) 0px,
       rgba(0,0,0,0) 1px,
       rgba(0,0,0,0.1) 2px,
       rgba(0,0,0,0.1) 3px
-    );
+  );
   z-index: 0;
-  mix-blend-mode: multiply;
+mix-blend-mode: multiply;
 }
+
+/* Grid Overlay with slight neon pastel glow */
 body::after {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  pointer-events: none;
-  background:
+content: "";
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+pointer-events: none;
+background:
     linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: moveGrid 30s linear infinite;
+background-size: 40px 40px;
+animation: moveGrid 30s linear infinite;
   z-index: 0;
 }
 
 @keyframes moveGrid {
-  0% { background-position: 0 0, 0 0; }
-  100% { background-position: 40px 40px, 40px 40px; }
+0% { background-position: 0 0, 0 0; }
+100% { background-position: 40px 40px, 40px 40px; }
 }
 
 
@@ -59,9 +60,9 @@ body::after {
     /* width: 90%;
     height: 90%; */
     /* border: 8px solid #f07d8c; */
-    border-radius: 15px;
+  border-radius: 15px;
     position: relative;
-    padding: 20px;
+  padding: 20px;
 }
 
 /* Window Styles */
@@ -91,19 +92,6 @@ body::after {
 .window.close {
     opacity: 0;
     transition: opacity 0.3s ease;
-}
-
-  
-
-@keyframes open-window {
-    0% {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
 }
 
 
@@ -150,28 +138,6 @@ body::after {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.window.open {
-  display: block;
-  transform: scale(1);
-  opacity: 1;
-}
-
-.window.close {
-  transform: scale(0.9);
-  opacity: 0;
-}
-
-@keyframes open-window {
-  0% {
-      transform: scale(0.8);
-      opacity: 0;
-  }
-  100% {
-      transform: scale(1);
-      opacity: 1;
-  }
-}
-
 @keyframes open-window {
     0% {
         transform: scale(0.8);
@@ -185,9 +151,9 @@ body::after {
 
 /* Icon Styles */
 .icons {
-    display: flex;
+  display: flex;
     justify-content: space-around;
-    flex-direction: column;  
+  flex-direction: column;
     align-items: center; 
     margin: 30px;
 }
@@ -201,14 +167,15 @@ body::after {
     height: 120px;
     text-align: center;
     padding-top: 10px;
-    border-radius: 12px;
+    border-radius: 120px;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* .icon:hover {
-    transform: scale(1.1);
-    background-color: #f07d8c;
-} */
+.icon:hover {
+  transform: scale(1.05);
+  background-color: #cabc99;
+  border-radius: 120px;
+}
 
 .icon-img {
     width: 60px;
@@ -285,7 +252,7 @@ body::after {
   box-shadow: 1px 1px 0 #000;
 }
 
-/* Wider window size for book recommender */
+/* book recommender */
 #window-bookrec {
   width: 420px;
   max-width: 90vw;
@@ -378,20 +345,7 @@ body::after {
     display: inline-block;
   }
   
-  /* .retro-menu .dropbtn {
-    background-color: #ececec;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-    color: rgb(0, 0, 0);
-    font-size: 14px;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    font-family: 'Press Start 2P', system-ui;
-  }
-  
-  .retro-menu .dropdown:hover .dropbtn {
-    background-color: #cdbfbf;
-  } */
+
   .close-btn {
     touch-action: manipulation; /* helps with pointer events */
     user-select: none;
@@ -618,3 +572,18 @@ body::after {
       font-size: 12px;
     }
   }
+
+  @media (max-width: 480px) {
+    .window {
+      width: 90vw;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  
+    .icon {
+      width: 80px;
+      height: 100px;
+      margin-left: 10px;
+    }
+  }
+  
