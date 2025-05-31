@@ -19,6 +19,41 @@ body {
     margin: 0;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0) 1px,
+      rgba(0,0,0,0.1) 2px,
+      rgba(0,0,0,0.1) 3px
+    );
+  z-index: 0;
+  mix-blend-mode: multiply;
+}
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: moveGrid 30s linear infinite;
+  z-index: 0;
+}
+
+@keyframes moveGrid {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 40px 40px, 40px 40px; }
+}
+
+
 /* Desktop Container */
 .desktop {
     /* width: 90%;
@@ -39,7 +74,7 @@ body {
     top: 50%;  
     left: 50%; 
     transform: translate(-50%, -50%); 
-    /* border-radius: 10px; */
+    border-radius: 10px;
     font-family: 'Courier New', Courier, monospace;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: none;
@@ -110,6 +145,32 @@ body {
     color: #444;
 }
 
+/* Smooth Transition for Window */
+.window {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.window.open {
+  display: block;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.window.close {
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+@keyframes open-window {
+  0% {
+      transform: scale(0.8);
+      opacity: 0;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
 
 @keyframes open-window {
     0% {
@@ -134,9 +195,9 @@ body {
 .icon {
     /* background-color: #f1a3c9; */
     width: 100px;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     height: 120px;
     text-align: center;
     padding-top: 10px;
@@ -165,7 +226,10 @@ body {
     height: 80px;
     margin-bottom: 10px;
 }
-
+.icon img[alt="Files"] {
+  width: 80px;
+  height: 80px;
+}
 
 .icon span {
     display: block;
@@ -174,33 +238,113 @@ body {
     font-weight: bold;
 }
 
-/* Smooth Transition for Window */
-.window {
-    transition: transform 0.3s ease, opacity 0.3s ease;
+.download-btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 8px;
+  background-color: #f07d8c;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  text-decoration: none;
+  border: 2px solid #222;
+  border-radius: 3px;
+  box-shadow: 1px 1px 0 #000;
+  transition: all 0.1s ease-in-out;
 }
 
-.window.open {
-    display: block;
-    transform: scale(1);
-    opacity: 1;
+.download-btn:hover {
+  background-color: #ff9aa2;
+  transform: translate(1px, 1px);
+  box-shadow: 0.5px 0.5px 0 #000;
 }
 
-.window.close {
-    transform: scale(0.9);
-    opacity: 0;
+.project-list {
+  list-style: none;
+  padding: 0;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  line-height: 2;
+  color: #333;
 }
 
-@keyframes open-window {
-    0% {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+.project-list li {
+  cursor: pointer;
+  background-color: #fff3f6;
+  padding: 8px;
+  margin: 6px 0;
+  border: 2px solid #f07d8c;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0 #000;
+  transition: 0.2s ease-in-out;
 }
 
+.project-list li:hover {
+  background-color: #ffe0e6;
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #000;
+}
+
+/* Wider window size for book recommender */
+#window-bookrec {
+  width: 420px;
+  max-width: 90vw;
+}
+
+.bookrec-content {
+  /* font-family: 'Press Start 2P', cursive; */
+  font-size: 9px;
+  line-height: 1.5;
+  padding: 12px;
+  color: #222;
+}
+
+/* Image style */
+.project-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #222;
+  box-shadow: 2px 2px 0 #000;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+
+/* Wider and tidier layout for portfolio window */
+#window-portfolio {
+  width: 420px;
+  max-width: 90vw;
+}
+
+.portfolio-content {
+  font-size: 9px;
+  line-height: 1.5;
+  padding: 12px;
+  color: #222;
+}
+
+.project-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #222;
+  box-shadow: 2px 2px 0 #000;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+
+/* Consistent styling for the Movie Q&A bot window */
+#window-moviebot {
+  width: 400px;
+  max-width: 90vw;
+}
+
+.moviebot-content {
+  font-size: 9px;
+  line-height: 1.5;
+  padding: 12px;
+  color: #222;
+}
 
 
 /* Retro Footer Styling */
@@ -248,7 +392,15 @@ body {
   .retro-menu .dropdown:hover .dropbtn {
     background-color: #cdbfbf;
   } */
-
+  .close-btn {
+    touch-action: manipulation; /* helps with pointer events */
+    user-select: none;
+    cursor: pointer;
+    font-size: 1.2em; /* Bigger target */
+    padding: 8px 12px; /* Larger tappable area */
+    z-index: 1100; /* Ensure it's above other elements */
+  }
+  
 
   .old-button {
     font-family: "Pixelify Sans", system-ui;
@@ -304,6 +456,92 @@ body {
   .retro-menu .dropdown-content a:hover {
     background-color: #555;
   }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #222;
+    border: 2px solid #444;
+    padding: 10px;
+    margin-top: 5px;
+    /* add other styling as needed */
+  }
+  
+  .dropdown-content.open {
+    display: block;
+  }
+
+  /* Secret game window styles */
+  .window-secret {
+    display: none;
+    position: absolute;  
+    top: 100px;     
+    left: 100px;     
+    width: 400px;
+    height: 475px;
+    background: #111;
+    color: #0f0;
+    font-family: monospace;
+    border: 2px solid #0f0;
+    border-radius: 6px;
+    box-shadow: 0 0 10px #0f0;
+    user-select: none;
+    z-index: 1000;     
+  }
+  
+
+.window-secret .window-header {
+  padding: 8px 12px;
+  border-bottom: 2px solid #0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.window-secret .window-header span {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.window-secret .close-btn {
+  background: transparent;
+  border: none;
+  color: #0f0;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: color 0.2s ease;
+}
+
+.window-secret .close-btn:hover {
+  color: #a0ffa0;
+}
+
+.window-secret .window-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.window-secret canvas {
+  background: #000;
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #0f0;
+  border-radius: 4px;
+  width: 320px;
+  height: 320px;
+}
+
+.window-secret p {
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+.window-secret p:last-child {
+  font-weight: bold;
+  font-size: 1em;
+}
+
   
   .streaming {
     font-size: 14px;

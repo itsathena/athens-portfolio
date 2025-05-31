@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="css/main.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Press+Start+2P&family=Rubik+Distressed&family=Rubik+Doodle+Shadow&family=Sofia+Sans+Extra+Condensed:ital,wght@0,1..1000;1,1..1000&family=Stint+Ultra+Condensed&display=swap"
       rel="stylesheet"
@@ -20,13 +20,18 @@
           <button class="close-btn">X</button>
         </div>
         <div class="window-content">
-          <h2>About Me</h2>
-          <p>
-            Hello! I'm Adheena Dev, a passionate web developer. I specialize in
-            front-end development and love creating interactive, retro-inspired
-            designs like this one. My goal is to craft user-friendly websites
-            with a vintage touch!
-          </p>
+          <h2>Adheena Dev</h2>
+          <div>
+            <h3 style="color: #f07d8c; font-size: 12px; margin-bottom: 8px">
+              ABOUT
+            </h3>
+            <p style="font-size: 12px; line-height: 1.4">
+              Hello! I'm a passionate developer who bridges creativity and
+              technology. I specialize in full-stack development with expertise
+              in modern frameworks, databases, and ML algorithms. When I'm not
+              coding, you'll find me SLEEPING!
+            </p>
+          </div>
         </div>
       </div>
 
@@ -37,8 +42,78 @@
           <button class="close-btn">X</button>
         </div>
         <div class="window-content">
-          <h2>Projects</h2>
-          <p>Here are some of the projects I have worked on...</p>
+          <h2>My Projects</h2>
+          <ul class="project-list">
+            <li onclick="openWindow('moviebot')">🎬 Movie Q&A Chatbot</li>
+            <li onclick="openWindow('bookrec')">
+              📚 Book Recommendation + AI Search
+            </li>
+            <li onclick="openWindow('portfolio')">
+              📈 Stock Portfolio Analyser
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Movie Chatbot Window -->
+      <div class="window" id="window-moviebot">
+        <div class="window-header" id="moviebot-header">
+          <span>🎬 Movie Q&A Bot</span>
+          <button class="close-btn">X</button>
+        </div>
+        <div class="window-content moviebot-content">
+          <h3>Movie Q&A Chatbot</h3>
+          <p>
+            AI-powered chatbot built with <strong>NLTK</strong>,
+            <strong>NumPy</strong>, and <strong>PyTorch</strong>. Delivers
+            smart, movie-focused responses using advanced
+            <strong>NLP techniques</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Book Recommendation Window -->
+      <div class="window" id="window-bookrec">
+        <div class="window-header" id="bookrec-header">
+          <span>📚 Book Recommender</span>
+          <button class="close-btn">X</button>
+        </div>
+        <div class="window-content bookrec-content">
+          <h3>Book Recommender + AI Search</h3>
+
+          <img
+            src="assests/images/project-book1.png"
+            alt="Book Recommendation Preview"
+            class="project-image"
+          />
+
+          <p>
+            Built with <strong>Streamlit</strong> and
+            <strong>SentenceTransformers</strong>, this tool suggests books
+            using AI-based semantic matching. It combines
+            <strong>scikit-learn</strong> and <strong>BM25</strong> for smart,
+            accurate results.
+          </p>
+        </div>
+      </div>
+
+      <!-- Stock Portfolio Window -->
+      <div class="window" id="window-portfolio">
+        <div class="window-header" id="portfolio-header">
+          <span>📈 Stock Portfolio</span>
+          <button class="close-btn">X</button>
+        </div>
+        <div class="window-content portfolio-content">
+          <h3>Stock Portfolio Analyser</h3>
+
+          <!-- <img src="portfolio-preview.png" alt="Stock Portfolio UI" class="project-image"> -->
+
+          <p>
+            Collaboratively developed the <strong>frontend</strong> for a
+            Python-based stock tool. Delivered a clean UI with
+            <strong>real-time market insights</strong> and custom
+            <strong>API integrations</strong>.
+          </p>
         </div>
       </div>
 
@@ -54,34 +129,65 @@
         </div>
       </div>
 
+      <!-- Retro Window: Files -->
+      <div class="window" id="window-files">
+        <div class="window-header" id="files-header">
+          <span>Files</span>
+          <button class="close-btn">X</button>
+        </div>
+        <div class="window-content">
+          <h2>My Files</h2>
+          <p>Click below to download my resume:</p>
+          <a href="assests/documents/ADHEENA-CV-3.pdf" target="_blank" class="download-btn"
+            >Resume</a
+          >
+        </div>
+      </div>
+
       <!-- Desktop Icons -->
       <div class="icons">
         <div class="icon" onclick="openWindow('aboutme')">
-          <img src="undertale1.png" alt="About Me" class="icon-img" />
+          <img src="assests/images/undertale1.png" alt="About Me" class="icon-img" />
           <span>About Me</span>
         </div>
         <div class="icon" onclick="openWindow('projects')">
-          <img src="projects2.png" alt="Projects" class="icon-img" />
+          <img src="assests/images/projects2.png" alt="Projects" class="icon-img" />
           <span>Projects</span>
         </div>
+        <div class="icon" onclick="openWindow('files')">
+          <img src="assests/images/files1.png" alt="Files" class="icon-img" />
+          <span>Files</span>
+        </div>
         <div class="icon" onclick="openWindow('contact')">
-          <img src="contact2.png" alt="Contact" class="icon-img" />
+          <img src="assests/images/contact2.png" alt="Contact" class="icon-img" />
           <span>Contact</span>
         </div>
       </div>
     </div>
 
+    <div class="window window-secret" id="window-secret">
+      <div class="window-header" id="secret-header">
+        <span>Catch the Pixel Game</span>
+        <button class="close-btn">X</button>
+      </div>
+      <div class="window-content">
+        <canvas id="catch-game" width="320" height="320"></canvas>
+        <p>Use ← and → keys to move paddle</p>
+        <p>Score: <span id="catch-score">0</span></p>
+      </div>
+    </div>    
+    
     <!-- Footer Section -->
     <footer class="retro-footer">
       <div class="footer-content">
         <!-- Retro Menu (Dropdown) -->
         <div class="retro-menu">
           <div class="dropdown">
-            <button class="old-button">MENU</button>
-            <div class="dropdown-content">
-              <a href="#">About Me</a>
-              <a href="#">Projects</a>
-              <a href="#">Contact</a>
+            <button class="old-button" id="menu-btn">MENU</button>
+            <div class="dropdown-content" id="dropdown-content">
+              <a href="#" data-window="aboutme">About Me</a>
+              <a href="#" data-window="projects">Projects</a>
+              <a href="#" data-window="contact">Contact</a>
             </div>
           </div>
         </div>
@@ -98,6 +204,6 @@
       </div>
     </footer>
 
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
