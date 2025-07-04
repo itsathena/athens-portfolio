@@ -54,7 +54,6 @@ animation: moveGrid 30s linear infinite;
 100% { background-position: 40px 40px, 40px 40px; }
 }
 
-
 /* Desktop Container */
 .desktop {
     /* width: 90%;
@@ -69,14 +68,14 @@ animation: moveGrid 30s linear infinite;
 .window {
     background-color: #f2eaea;
     border: 2px solid #d69393;
-    width: 300px;
+    width: 400px;
     padding: 10px;
     position: absolute; 
     top: 50%;  
     left: 50%; 
-    transform: translate(-50%, -50%); 
+    /* transform: translate(-50%, -50%);  */
     border-radius: 10px;
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: none;
     z-index: 10;
@@ -129,7 +128,7 @@ animation: moveGrid 30s linear infinite;
 }
 
 .window-content p {
-    font-size: 14px;
+    font-size: 7px;
     color: #444;
 }
 

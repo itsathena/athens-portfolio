@@ -36,19 +36,22 @@ closeBtns.forEach((button) => {
 });
 
 // Function to set a random position for a window
-function setRandomPosition(window) {
-  const windowWidth = window.offsetWidth;
-  const windowHeight = window.offsetHeight;
+function setRandomPosition(windowElement) {
+  const windowWidth = windowElement.offsetWidth;
+  const windowHeight = windowElement.offsetHeight;
 
   const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
   const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
-  // Ensure window stays within the screen bounds
-  const randomX = Math.floor(Math.random() * (screenWidth - windowWidth));
-  const randomY = Math.floor(Math.random() * (screenHeight - windowHeight));
+  const maxX = Math.max(0, screenWidth - windowWidth);
+  const maxY = Math.max(0, screenHeight - windowHeight);
 
-  window.style.left = `${randomX}px`;
-  window.style.top = `${randomY}px`;
+  const randomX = Math.floor(Math.random() * maxX);
+  const randomY = Math.floor(Math.random() * maxY);
+
+  windowElement.style.transform = 'none';
+  windowElement.style.left = `${randomX}px`;
+  windowElement.style.top = `${randomY}px`;
 }
 
 // Function to make a window draggable
